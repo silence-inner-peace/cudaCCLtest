@@ -1,0 +1,1 @@
+用异步cudaHostAlloc,cudaMemcpyAsync,实现了GPU计算时CPU同时读下一个分块

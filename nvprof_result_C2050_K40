@@ -1,0 +1,77 @@
+C2050
+==14211== Profiling application: ./main ../data/landuse92_California.tif
+==14211== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 36.80%  14.4051s         9  1.60057s  1.45366s  1.95917s  getPixNumAndPeri(int*, int*, int*, int*, int, int)
+ 34.69%  13.5793s        27  502.94ms  156.94ms  9.23287s  [CUDA memcpy DtoH]
+ 17.09%  6.68825s         9  743.14ms  688.31ms  805.05ms  gpuLineUfGlobal(int*, int*, int, int, int)
+  5.03%  1.96844s         9  218.72ms  208.71ms  231.12ms  gpuLineLocal(int*, int*, int, int, int)
+  1.92%  753.11ms        25  30.124ms  17.344us  90.734ms  [CUDA memcpy HtoD]
+  1.59%  621.77ms         9  69.086ms  67.543ms  70.251ms  gpuLineUfFinal(int*, int, int)
+  1.51%  592.34ms         7  84.620ms  82.497ms  86.884ms  getEachPixelPeriMid2(int*, int*, int*, int*, int, int, int, int, int, int)
+  0.50%  196.72ms         8  24.590ms  24.489ms  24.610ms  updateDevLabel(int*, int, int, int)
+  0.47%  182.31ms        27  6.7522ms  6.6854ms  7.4553ms  [CUDA memset]
+  0.20%  79.771ms         1  79.771ms  79.771ms  79.771ms  getEachPixelPeriBottom(int*, int*, int*, int, int, int, int, int, int)
+  0.20%  78.796ms         1  78.796ms  78.796ms  78.796ms  getEachPixelPeriTop1(int*, int*, int*, int, int, int, int, int, int)
+
+==14211== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 73.06%  30.3365s        52  583.40ms  48.589us  10.5972s  cudaMemcpy
+ 26.22%  10.8884s        60  181.47ms  7.0940us  1.20422s  cudaFree
+  0.24%  99.009ms        61  1.6231ms  9.4860us  65.072ms  cudaMalloc
+  0.20%  83.525ms         9  9.2805ms  2.1480us  83.503ms  cudaEventElapsedTime
+  0.13%  54.788ms         1  54.788ms  54.788ms  54.788ms  cudaMemGetInfo
+  0.06%  24.617ms        27  911.75us  6.5940us  24.198ms  cudaMemset
+  0.04%  17.647ms         9  1.9608ms  3.0250us  17.616ms  cudaEventSynchronize
+  0.04%  15.244ms        53  287.62us  4.4300us  14.559ms  cudaLaunch
+  0.00%  1.7443ms       182  9.5840us     158ns  781.25us  cuDeviceGetAttribute
+  0.00%  791.41us        18  43.967us  2.5160us  654.06us  cudaEventRecord
+  0.00%  173.74us         2  86.871us  80.497us  93.246us  cuDeviceTotalMem
+  0.00%  120.69us         2  60.345us  57.050us  63.641us  cuDeviceGetName
+  0.00%  56.062us       291     192ns     120ns  6.4890us  cudaSetupArgument
+  0.00%  52.494us        18  2.9160us     858ns  9.5650us  cudaEventCreate
+  0.00%  36.250us        53     683ns     163ns  2.6460us  cudaConfigureCall
+  0.00%  7.7290us         1  7.7290us  7.7290us  7.7290us  cudaSetDevice
+  0.00%  7.2850us         1  7.2850us  7.2850us  7.2850us  cudaGetDeviceCount
+  0.00%  3.1710us         3  1.0570us     187ns  1.9240us  cuDeviceGetCount
+  0.00%  1.5130us         6     252ns     153ns     414ns  cuDeviceGet
+
+
+
+K40
+==10603== Profiling application: ./main ../data/landuse92_California.tif
+==10603== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 46.44%  5.42593s         6  904.32ms  875.10ms  942.26ms  [CUDA memcpy DtoH]
+ 21.26%  2.48428s         4  621.07ms  11.711us  1.26122s  [CUDA memcpy HtoD]
+ 14.98%  1.75062s         2  875.31ms  853.95ms  896.67ms  gpuLineUfGlobal(int*, int*, int, int, int)
+  8.38%  978.51ms         2  489.26ms  455.57ms  522.95ms  getPixNumAndPeri(int*, int*, int*, int*, int, int)
+  3.89%  454.65ms         2  227.33ms  218.61ms  236.04ms  gpuLineLocal(int*, int*, int, int, int)
+  2.02%  236.04ms         2  118.02ms  117.12ms  118.91ms  gpuLineUfFinal(int*, int, int)
+  1.12%  130.86ms         1  130.86ms  130.86ms  130.86ms  getEachPixelPeriTop1(int*, int*, int*, int, int, int, int, int, int)
+  1.11%  129.43ms         1  129.43ms  129.43ms  129.43ms  getEachPixelPeriBottom(int*, int*, int*, int, int, int, int, int, int)
+  0.49%  57.432ms         6  9.5720ms  9.3015ms  9.8437ms  [CUDA memset]
+  0.31%  35.714ms         1  35.714ms  35.714ms  35.714ms  updateDevLabel(int*, int, int, int)
+
+==10603== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 73.38%  8.93043s        10  893.04ms  130.58us  1.46598s  cudaMemcpy
+ 22.73%  2.76579s        11  251.44ms  40.867us  1.41255s  cudaFree
+  3.70%  450.91ms         1  450.91ms  450.91ms  450.91ms  cudaMemGetInfo
+  0.17%  20.805ms        12  1.7338ms  14.137us  2.4348ms  cudaMalloc
+  0.01%  1.0234ms         2  511.69us  510.39us  512.98us  cuDeviceTotalMem
+  0.01%  823.11us       182  4.5220us     238ns  158.72us  cuDeviceGetAttribute
+  0.00%  251.42us         6  41.904us  21.290us  83.332us  cudaMemset
+  0.00%  217.99us        11  19.816us  12.788us  33.913us  cudaLaunch
+  0.00%  67.188us         2  33.594us  31.200us  35.988us  cuDeviceGetName
+  0.00%  30.314us         4  7.5780us  6.0950us  10.313us  cudaEventRecord
+  0.00%  19.442us         4  4.8600us  1.1260us  10.317us  cudaEventCreate
+  0.00%  18.562us        60     309ns     245ns  1.2160us  cudaSetupArgument
+  0.00%  17.657us         2  8.8280us  7.3120us  10.345us  cudaEventSynchronize
+  0.00%  15.518us         1  15.518us  15.518us  15.518us  cudaSetDevice
+  0.00%  12.304us         2  6.1520us  6.0450us  6.2590us  cudaEventElapsedTime
+  0.00%  8.3040us        11     754ns     368ns  2.1470us  cudaConfigureCall
+  0.00%  5.7750us         3  1.9250us     352ns  4.6860us  cuDeviceGetCount
+  0.00%  3.5430us         6     590ns     307ns  1.2970us  cuDeviceGet
+  0.00%  3.5330us         1  3.5330us  3.5330us  3.5330us  cudaGetDeviceCount
+
